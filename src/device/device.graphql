@@ -1,0 +1,17 @@
+type Device {
+  id: String
+  name: String
+}
+input DeviceInput {
+  id: String
+  name: String
+}
+
+type Query {
+  device(id: String!): Device
+  devices: [Device] 
+}
+
+type Mutation {
+  createDevice(device: DeviceInput!): Device
+}

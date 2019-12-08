@@ -1,12 +1,14 @@
-import { Controller, Get, Inject } from '@nestjs/common';
-import { ClientProxy, MessagePattern } from '@nestjs/microservices';
+import { Controller } from '@nestjs/common';
+import { MessagePattern } from '@nestjs/microservices';
+import { MqttService } from './mqtt.service'
 
 @Controller()
 export class MqttController {
+  constructor(private readonly mqttService: MqttService) {}
 
   @MessagePattern('sum')
   sum(data: number[]): number {
-    console.log(data)
     return (data || []).reduce((a, b) => a + b);
   }
+
 }

@@ -1,10 +1,20 @@
 type Device {
   id: String
   name: String
+  commands: [String]
+  links: [Link]
 }
 input DeviceInput {
-  id: String
   name: String
+  commands: [String]
+  links: [LinkInput]
+}
+
+type Link {
+  to: String
+}
+input LinkInput {
+  to: String
 }
 
 type Query {
@@ -14,4 +24,6 @@ type Query {
 
 type Mutation {
   createDevice(device: DeviceInput!): Device
+  deleteDevices(ids: [String]!): String
+  updateDevice(id: String!, data: DeviceInput!): Device
 }

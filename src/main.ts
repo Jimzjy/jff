@@ -7,9 +7,7 @@ const aedes = require('aedes')()
 const mqttServer = require('net').createServer(aedes.handle)
 const mqttPort = 1883
 
-mqttServer.listen(mqttPort, () => {
-  console.log('mqtt server listening on port', mqttPort)
-})
+mqttServer.listen(mqttPort)
 
 async function bootstrapHttp() {
   const app = await NestFactory.create(AppModule)
@@ -22,7 +20,6 @@ async function bootstrapMqtt() {
     transport: Transport.MQTT,
     options: {
       port: 1883,
-      protocol: 'tcp',
     },
   })
   await app.listenAsync()

@@ -5,34 +5,56 @@
  */
 
 /* tslint:disable */
-export interface DeviceInput {
+export class DeviceInput {
     name?: string;
     commands?: string[];
     links?: LinkInput[];
 }
 
-export interface LinkInput {
+export class LinkInput {
     to?: string;
 }
 
-export interface Device {
+export class UserInput {
+    name?: string;
+}
+
+export class Device {
     id?: string;
     name?: string;
     commands?: string[];
     links?: Link[];
 }
 
-export interface Link {
+export class Link {
     to?: string;
 }
 
-export interface IMutation {
-    createDevice(device: DeviceInput): Device | Promise<Device>;
-    deleteDevices(ids: string[]): string | Promise<string>;
-    updateDevice(id: string, data: DeviceInput): Device | Promise<Device>;
+export abstract class IMutation {
+    abstract createDevice(device: DeviceInput): Device | Promise<Device>;
+
+    abstract deleteDevices(ids: string[]): string | Promise<string>;
+
+    abstract updateDevice(id: string, data: DeviceInput): Device | Promise<Device>;
+
+    abstract createUser(id?: string): User | Promise<User>;
+
+    abstract deleteUser(id?: string): User | Promise<User>;
+
+    abstract updateUser(id?: string): User | Promise<User>;
 }
 
-export interface IQuery {
-    device(id: string): Device | Promise<Device>;
-    devices(): Device[] | Promise<Device[]>;
+export abstract class IQuery {
+    abstract device(id: string): Device | Promise<Device>;
+
+    abstract devices(): Device[] | Promise<Device[]>;
+
+    abstract users(): User[] | Promise<User[]>;
+
+    abstract user(id?: string): User | Promise<User>;
+}
+
+export class User {
+    id?: string;
+    name?: string;
 }

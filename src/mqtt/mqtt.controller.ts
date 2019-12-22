@@ -6,9 +6,9 @@ import { MqttService } from './mqtt.service'
 export class MqttController {
   constructor(private readonly mqttService: MqttService) {}
 
-  @MessagePattern('sum')
-  sum(data: number[]): number {
-    return (data || []).reduce((a, b) => a + b);
+  @MessagePattern('command')
+  command(id: string, command: string, data: string) {
+    
   }
 
 }

@@ -6,7 +6,7 @@ import { UserModel } from './interfaces/user.interface'
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel('Device') private readonly userModel: Model<UserModel>) {}
+  constructor(@InjectModel('User') private readonly userModel: Model<UserModel>) {}
 
   async findOneById(id: string): Promise<User> {
     return await this.userModel.findById(id)

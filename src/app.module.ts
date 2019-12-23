@@ -4,20 +4,19 @@ import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { DeviceModule } from './device/device.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
     GraphQLModule.forRoot({
       typePaths: ['./**/*.graphql'],
-      // definitions: {
-      //   path: join(process.cwd(), 'src/graphql.schema.ts'),
-      // },
     }),
     MongooseModule.forRoot('mongodb://localhost/jff', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }),
     DeviceModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

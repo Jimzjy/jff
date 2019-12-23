@@ -8,7 +8,8 @@ export class MqttController {
 
   @MessagePattern('command')
   command(id: string, command: string, data: string) {
-    
+    this.mqttService.handleCommand(id, command, data)
   }
+
 
 }

@@ -11,10 +11,14 @@ input DeviceInput {
 }
 
 type Link {
-  to: String
+  from: String
+  to: String,
+  toID: String
 }
 input LinkInput {
-  to: String
+  from: String
+  to: String,
+  toID: String
 }
 
 type Query {

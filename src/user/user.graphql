@@ -9,11 +9,11 @@ input UserInput {
 
 type Query {
   users: [User],
-  user(id: String): User
+  user(id: String!): User
 }
 
 type Mutation {
-  createUser(id: String): User,
-  deleteUser(id: String): User,
-  updateUser(id: String): User
+  createUser(user: UserInput!): User,
+  deleteUsers(ids: [String]!): String,
+  updateUser(id: String!, user: UserInput!): User
 }

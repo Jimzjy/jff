@@ -12,7 +12,9 @@ export class DeviceInput {
 }
 
 export class LinkInput {
+    from?: string;
     to?: string;
+    toID?: string;
 }
 
 export class UserInput {
@@ -27,7 +29,9 @@ export class Device {
 }
 
 export class Link {
+    from?: string;
     to?: string;
+    toID?: string;
 }
 
 export abstract class IMutation {
@@ -37,11 +41,11 @@ export abstract class IMutation {
 
     abstract updateDevice(id: string, data: DeviceInput): Device | Promise<Device>;
 
-    abstract createUser(id?: string): User | Promise<User>;
+    abstract createUser(user: UserInput): User | Promise<User>;
 
-    abstract deleteUser(id?: string): User | Promise<User>;
+    abstract deleteUsers(ids: string[]): string | Promise<string>;
 
-    abstract updateUser(id?: string): User | Promise<User>;
+    abstract updateUser(id: string, user: UserInput): User | Promise<User>;
 }
 
 export abstract class IQuery {
@@ -51,7 +55,7 @@ export abstract class IQuery {
 
     abstract users(): User[] | Promise<User[]>;
 
-    abstract user(id?: string): User | Promise<User>;
+    abstract user(id: string): User | Promise<User>;
 }
 
 export class User {

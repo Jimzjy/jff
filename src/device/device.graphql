@@ -28,6 +28,12 @@ type Query {
 
 type Mutation {
   createDevice(device: DeviceInput!): Device
-  deleteDevices(ids: [String]!): String
+  deleteDevices(ids: [String]!): DeleteResult
   updateDevice(id: String!, data: DeviceInput!): Device
+}
+
+type DeleteResult {
+  n: Int,
+  ok: Int,
+  deletedCount: Int
 }

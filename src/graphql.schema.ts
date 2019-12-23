@@ -21,6 +21,12 @@ export class UserInput {
     name?: string;
 }
 
+export class DeleteResult {
+    n?: number;
+    ok?: number;
+    deletedCount?: number;
+}
+
 export class Device {
     id?: string;
     name?: string;

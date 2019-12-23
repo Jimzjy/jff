@@ -1,6 +1,6 @@
 import { Resolver, Args, Query, Mutation } from '@nestjs/graphql';
 import { UserService } from './user.service';
-import { User, UserInput } from 'src/graphql.schema';
+import { User, UserInput, DeleteResult } from 'src/graphql.schema';
 
 @Resolver('User')
 export class UserResolver {
@@ -22,7 +22,7 @@ export class UserResolver {
   }
 
   @Mutation('deleteUsers')
-  async deleteUsers(@Args('ids') ids: string[]) {
+  async deleteUsers(@Args('ids') ids: string[]): Promise<DeleteResult> {
     return await this.userService.delete(ids)
   }
 

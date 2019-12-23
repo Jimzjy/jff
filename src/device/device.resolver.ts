@@ -1,6 +1,6 @@
 import { Resolver, Args, Query, Mutation } from '@nestjs/graphql';
 import { DeviceService } from './device.service';
-import { Device, DeviceInput } from 'src/graphql.schema';
+import { Device, DeviceInput, DeleteResult } from 'src/graphql.schema';
 
 @Resolver('Device')
 export class DeviceResolver {
@@ -22,7 +22,7 @@ export class DeviceResolver {
   }
 
   @Mutation('deleteDevices')
-  async deleteDevices(@Args('ids') ids: string[]) {
+  async deleteDevices(@Args('ids') ids: string[]): Promise<DeleteResult> {
     return await this.deviceService.delete(ids)
   }
 

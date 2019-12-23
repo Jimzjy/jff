@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { User, UserInput } from 'src/graphql.schema'
+import { User, UserInput, DeleteResult } from 'src/graphql.schema'
 import { UserModel } from './interfaces/user.interface'
 
 @Injectable()
@@ -20,11 +20,11 @@ export class UserService {
     return await this.userModel.create(user)
   }
 
-  async delete(ids: string[]) {
-    return await this.userModel.deleteMany({ id: { $in: ids } })
+  async delete(ids: string[]): Promise<DeleteResult> {
+    return await this.userModel.deleteMany({ _id: { $in: ids } })
   }
 
   async update(id: string, data: UserInput): Promise<User> {
-    return await this.userModel.updateOne({ id }, data)
+    return await this.userModel.updateOne({ _id: id }, data)
   }
 }

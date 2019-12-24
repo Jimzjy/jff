@@ -12,7 +12,7 @@ export class MqttService {
     @InjectModel('Device') private readonly deviceModel: Model<DeviceModel>,
   ) {}
 
-  async handleCommand(id: string, command: string, data: string) {
+  async handleCommand(id: string, command: string, data?: string) {
     const device = await this.deviceModel.findById(id)
     const links = device.links
     if (!links) {
@@ -25,7 +25,7 @@ export class MqttService {
     })
   }
 
-  transferCommand(id: string, command: string, data: string) {
-    this.client.send<number>(`${id}||${command}`, { data })
+  transferCommand(id: string, command: string, data?: string) {
+    this.client.send<number>(`${id}||${command}`, { data: data ? data : '' })
   }
 }

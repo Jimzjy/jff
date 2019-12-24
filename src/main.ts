@@ -7,6 +7,11 @@ const aedes = require('aedes')()
 const mqttServer = require('net').createServer(aedes.handle)
 const mqttPort = 1883
 
+aedes.on('subscribe', function (subscriptions, client) {
+  console.log('MQTT client \x1b[32m' + (client ? client.id : client) +
+          '\x1b[0m subscribed to topics: ' + subscriptions.map(s => s.topic).join('\n'), 'from broker', aedes.id)
+})
+
 mqttServer.listen(mqttPort)
 
 async function bootstrapHttp() {

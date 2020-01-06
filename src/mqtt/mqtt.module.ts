@@ -9,7 +9,13 @@ import { DeviceSchema } from '../device/schemas/device.schema'
 
 @Module({
   imports: [
-    ClientsModule.register([{ name: MQTT_SERVICE, transport: Transport.MQTT }]),
+    ClientsModule.register([{
+      name: MQTT_SERVICE,
+      transport: Transport.MQTT,
+      options: {
+        port: 1883,
+      },
+    }]),
     MongooseModule.forRoot('mongodb://localhost/jff', {
       useNewUrlParser: true,
       useUnifiedTopology: true,

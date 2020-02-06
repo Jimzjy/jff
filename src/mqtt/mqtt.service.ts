@@ -27,7 +27,9 @@ export class MqttService {
     })
     let user
     try {
+      console.log(data)
       user = JSON.parse(data)
+      console.log(user)
     } finally {
       if (user) {
         this.historyModel.create({

@@ -4,7 +4,7 @@ type History {
   command: String,
   device: String,
   deviceID: String,
-  time: Int
+  time: String
 }
 
 type Query {

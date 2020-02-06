@@ -40,7 +40,7 @@ export class History {
     commmand?: string;
     device?: string;
     deviceID?: string;
-    time?: string;
+    time?: number;
 }
 
 export class Link {

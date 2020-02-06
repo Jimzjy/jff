@@ -14,8 +14,8 @@ export class HistoryService {
         const datetime = new Date(new Date().toLocaleDateString()).getTime()
         return await this.historyModel.find({ time: { $gte: datetime } })
       case 'week':
-        const nowDate = new Date()
-        const date = new Date(+nowDate - 6 * 86400000).getTime()
+        const nowDate = new Date(new Date().toLocaleDateString()).getTime()
+        const date = new Date(nowDate - 6 * 86400000).getTime()
         return await this.historyModel.find({ time: { $gte: date } })
       default:
         return await this.historyModel.find()

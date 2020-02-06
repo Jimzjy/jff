@@ -5,6 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { DeviceModule } from './device/device.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from './user/user.module';
+import { HistoryModule } from './history/history.module'
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { UserModule } from './user/user.module';
     }),
     DeviceModule,
     UserModule,
+    HistoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

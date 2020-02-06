@@ -4,10 +4,10 @@ import { History } from 'src/graphql.schema'
 
 @Resolver('history')
 export class HistoryResolver {
-  constructor(private readonly deviceService: HistoryService) {}
+  constructor(private readonly historyService: HistoryService) {}
 
   @Query('history')
   async getHistory(@Args('type') type: string): Promise<History[]> {
-    return await this.deviceService.getHistory(type)
+    return await this.historyService.getHistory(type)
   }
 }

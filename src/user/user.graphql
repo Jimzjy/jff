@@ -10,6 +10,7 @@ input UserInput {
 type Query {
   users: [User],
   user(id: String!): User
+  userLogin(name: String): Boolean
 }
 
 type Mutation {

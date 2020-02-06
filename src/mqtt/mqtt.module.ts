@@ -6,6 +6,7 @@ import { MQTT_SERVICE } from './mqtt.constants'
 import { MqttService } from './mqtt.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { DeviceSchema } from '../device/schemas/device.schema'
+import { HistorySchema } from '../history/schemas/history.schema'
 
 @Module({
   imports: [
@@ -20,7 +21,7 @@ import { DeviceSchema } from '../device/schemas/device.schema'
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }),
-    MongooseModule.forFeature([{ name: 'Device', schema: DeviceSchema }]),
+    MongooseModule.forFeature([{ name: 'Device', schema: DeviceSchema }, { name: 'History', schema: HistorySchema }]),
   ],
   controllers: [MqttController],
   providers: [MqttService],

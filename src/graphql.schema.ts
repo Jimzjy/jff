@@ -34,6 +34,15 @@ export class Device {
     links?: Link[];
 }
 
+export class History {
+    username?: string;
+    userID?: string;
+    commmand?: string;
+    device?: string;
+    deviceID?: string;
+    time?: string;
+}
+
 export class Link {
     from?: string;
     to?: string;
@@ -43,13 +52,13 @@ export class Link {
 export abstract class IMutation {
     abstract createDevice(device: DeviceInput): Device | Promise<Device>;
 
-    abstract deleteDevices(ids: string[]): string | Promise<string>;
+    abstract deleteDevices(ids: string[]): DeleteResult | Promise<DeleteResult>;
 
     abstract updateDevice(id: string, data: DeviceInput): Device | Promise<Device>;
 
     abstract createUser(user: UserInput): User | Promise<User>;
 
-    abstract deleteUsers(ids: string[]): string | Promise<string>;
+    abstract deleteUsers(ids: string[]): DeleteResult | Promise<DeleteResult>;
 
     abstract updateUser(id: string, user: UserInput): User | Promise<User>;
 }
@@ -59,9 +68,13 @@ export abstract class IQuery {
 
     abstract devices(): Device[] | Promise<Device[]>;
 
+    abstract history(type: string): History[] | Promise<History[]>;
+
     abstract users(): User[] | Promise<User[]>;
 
     abstract user(id: string): User | Promise<User>;
+
+    abstract userLogin(name?: string): boolean | Promise<boolean>;
 }
 
 export class User {

@@ -16,6 +16,15 @@ export class UserService {
     return await this.userModel.find()
   }
 
+  async login(context: any, name: string): Promise<boolean> {
+    const user: User = await this.userModel.findOne({ name })
+    if (!user) {
+      return false
+    }
+    context.res.cookie('user', JSON.stringify(user))
+    return true
+  }
+
   async create(user: UserInput): Promise<User> {
     return await this.userModel.create(user)
   }

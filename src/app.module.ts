@@ -10,6 +10,7 @@ import { UserModule } from './user/user.module';
   imports: [
     GraphQLModule.forRoot({
       typePaths: ['./**/*.graphql'],
+      context: ({ req, res }) => ({ req, res }),
     }),
     MongooseModule.forRoot('mongodb://localhost/jff', {
       useNewUrlParser: true,

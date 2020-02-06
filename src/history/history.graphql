@@ -1,0 +1,12 @@
+type History {
+  username: String,
+  userID: String,
+  commmand: String,
+  device: String,
+  deviceID: String,
+  time: Int
+}
+
+type Query {
+  history(type: String!): [History]
+}

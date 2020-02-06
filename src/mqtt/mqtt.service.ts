@@ -27,12 +27,10 @@ export class MqttService {
     })
     let user
     try {
-      console.log(data)
       user = JSON.parse(data)
-      console.log(user)
     } finally {
       if (user) {
-        this.historyModel.create({
+        const historyRecord = await this.historyModel.create({
           username: user.name,
           userID: user.id,
           command,
@@ -40,6 +38,7 @@ export class MqttService {
           deviceID: id,
           time: Date.now(),
         })
+        console.log(historyRecord)
       }
     }
   }

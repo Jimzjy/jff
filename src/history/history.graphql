@@ -1,7 +1,7 @@
 type History {
   username: String,
   userID: String,
-  commmand: String,
+  command: String,
   device: String,
   deviceID: String,
   time: Int

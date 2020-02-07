@@ -37,10 +37,10 @@ export class Device {
 export class History {
     username?: string;
     userID?: string;
-    commmand?: string;
+    command?: string;
     device?: string;
     deviceID?: string;
-    time?: number;
+    time?: string;
 }
 
 export class Link {
@@ -74,7 +74,7 @@ export abstract class IQuery {
 
     abstract user(id: string): User | Promise<User>;
 
-    abstract userLogin(name?: string): boolean | Promise<boolean>;
+    abstract userLogin(name?: string): User | Promise<User>;
 }
 
 export class User {

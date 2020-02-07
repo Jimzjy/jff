@@ -17,7 +17,7 @@ export class UserResolver {
   }
 
   @Query('userLogin')
-  async userLogin(@Context() context: any, @Args('name') name: string): Promise<User | boolean> {
+  async userLogin(@Context() context: any, @Args('name') name: string): Promise<User> {
     return await this.userService.login(context, name)
   }
 

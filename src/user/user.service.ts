@@ -16,10 +16,10 @@ export class UserService {
     return await this.userModel.find()
   }
 
-  async login(context: any, name: string): Promise<User | boolean> {
+  async login(context: any, name: string): Promise<User> {
     const user: User = await this.userModel.findOne({ name })
     if (!user) {
-      return false
+      return null
     }
     context.res.cookie('user', JSON.stringify(user))
     return user

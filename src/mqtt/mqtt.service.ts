@@ -43,6 +43,7 @@ export class MqttService {
   }
 
   transferCommand(id: string, command: string, data?: string) {
+    console.log(id, command, data)
     this.client.send(`/${id}/${command}`, data ? data : '').toPromise()
   }
 }
